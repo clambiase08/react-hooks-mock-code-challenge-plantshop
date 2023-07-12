@@ -6,6 +6,9 @@ import Search from "./Search";
 function PlantPage() {
 
   const [plants, setPlants] = useState([]);
+  const [search, setSearch] = useState("");
+
+  const searchedPlants = plants.filter(plant => plant.name.toLowerCase().includes(search.toLowerCase()));
   
 
   const onAddPlant = newPlant => {
@@ -21,8 +24,8 @@ function PlantPage() {
   return (
     <main>
       <NewPlantForm onAddPlant={onAddPlant}/>
-      <Search />
-      <PlantList plants={plants} />
+      <Search setSearch={setSearch} search={search}/>
+      <PlantList plants={searchedPlants} />
     </main>
   );
 }
