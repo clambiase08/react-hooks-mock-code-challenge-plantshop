@@ -24,15 +24,18 @@ function PlantCard({ plant, onDeletePlant, OnUpdatePlant }) {
         price: parseFloat(event.target.innerText),
       }),
     }).then((res) => res.json());
-    OnUpdatePlant(plant)
+    OnUpdatePlant(plant);
   }
 
   return (
     <li className="card">
       <img src={plant.image} alt={"plant name"} />
       <h4>{plant.name}</h4>
-      <p>Price: 
-        <div onInput={handlePriceChange} contentEditable="true">{plant.price}</div>
+      <p>
+        Price:
+        <div onInput={handlePriceChange} contentEditable="true">
+          {plant.price}
+        </div>
       </p>
       {isInStock ? (
         <button onClick={toggleSoldOut} className="primary">
