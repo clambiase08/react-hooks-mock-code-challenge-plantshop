@@ -1,11 +1,11 @@
-import React, {useState} from "react";
+import React from "react";
 import PlantCard from "./PlantCard";
 
-function PlantList({plants}) {
+function PlantList({plants, onDeletePlant}) {
   
 
   const plantDetails = plants.map((plant) => {
-    return <PlantCard key={plant.id} name={plant.name} image={plant.image} price={plant.price} />
+    return <PlantCard key={plant.id} plant={plant} onDeletePlant={onDeletePlant} />
   })
 
   return (

@@ -9,7 +9,6 @@ function PlantPage() {
   const [search, setSearch] = useState("");
 
   const searchedPlants = plants.filter(plant => plant.name.toLowerCase().includes(search.toLowerCase()));
-  
 
   const onAddPlant = newPlant => {
     setPlants([...plants, newPlant]);
@@ -21,11 +20,28 @@ function PlantPage() {
     .then(plants => setPlants(plants));
   },[])
 
+  function handleUpdatePlant(updatedPlant) {
+    const updatedPlants = plants.map(plant => {
+      if (plant.id === updatedPlant.id) {
+        return updatedPlant;
+      } else {
+        return plant;
+      }
+    })
+      setPlants(updatedPlants);
+    }
+
+    function handleDeletePlant(deletedPlant) {
+          const updatedPlants = plants.filter(plant => plant.id !== deletedPlant.id);
+          setPlants(updatedPlants);
+        }
+
+
   return (
     <main>
       <NewPlantForm onAddPlant={onAddPlant}/>
       <Search setSearch={setSearch} search={search}/>
-      <PlantList plants={searchedPlants} />
+      <PlantList plants={searchedPlants} onDeletePlant={handleDeletePlant} />
     </main>
   );
 }
