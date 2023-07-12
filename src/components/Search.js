@@ -1,7 +1,6 @@
 import React from "react";
 
-function Search({setSearch, search }) {
-
+function Search({ setSearch, search }) {
   function handleSearch(e) {
     setSearch(e.target.value);
   }
