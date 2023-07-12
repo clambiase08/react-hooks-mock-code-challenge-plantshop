@@ -4,7 +4,7 @@ function NewPlantForm({onAddPlant}) {
 
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,7 +12,7 @@ function NewPlantForm({onAddPlant}) {
     const newPlant = {
       name: name, 
       image: image, 
-      price: price
+      price: parseFloat(price)
     };
     fetch("http://localhost:6001/plants", {
       method: "POST",
