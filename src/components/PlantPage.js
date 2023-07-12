@@ -36,12 +36,23 @@ function PlantPage() {
           setPlants(updatedPlants);
         }
 
+    function handleUpdatePlant(updatedPlant) {
+      const updatedPlants = plants.map(plant => {
+              if (plant.id === updatedPlant.id) {
+                return updatedPlant;
+              } else {
+                return plant;
+              }
+            })
+            setPlants(updatedPlants);
+          }
+
 
   return (
     <main>
       <NewPlantForm onAddPlant={onAddPlant}/>
       <Search setSearch={setSearch} search={search}/>
-      <PlantList plants={searchedPlants} onDeletePlant={handleDeletePlant} />
+      <PlantList plants={searchedPlants} onDeletePlant={handleDeletePlant} handleUpdatePlant={handleUpdatePlant} />
     </main>
   );
 }
