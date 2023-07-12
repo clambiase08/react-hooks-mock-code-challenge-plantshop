@@ -7,6 +7,10 @@ function PlantPage() {
 
   const [plants, setPlants] = useState([]);
 
+  const onAddPlant = newPlant => {
+    setPlants([...plants, newPlant]);
+      };
+
   useEffect(() => {
     fetch("http://localhost:6001/plants")
     .then(res => res.json())
@@ -15,7 +19,7 @@ function PlantPage() {
 
   return (
     <main>
-      <NewPlantForm />
+      <NewPlantForm onAddPlant={onAddPlant}/>
       <Search />
       <PlantList plants={plants}/>
     </main>
