@@ -21,7 +21,7 @@ function PlantCard({ plant, onDeletePlant, OnUpdatePlant }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        price: event.target.innerText,
+        price: parseFloat(event.target.innerText),
       }),
     }).then((res) => res.json());
     OnUpdatePlant(plant)
