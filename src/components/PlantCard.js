@@ -31,12 +31,12 @@ function PlantCard({ plant, onDeletePlant, OnUpdatePlant }) {
     <li className="card">
       <img src={plant.image} alt={"plant name"} />
       <h4>{plant.name}</h4>
-      <p>
-        Price:
-        <div onInput={handlePriceChange} contentEditable="true">
+      <div>
+        Price: $ 
+        <span onBlur={handlePriceChange} contentEditable>
           {plant.price}
-        </div>
-      </p>
+        </span>
+      </div>
       {isInStock ? (
         <button onClick={toggleSoldOut} className="primary">
           In Stock

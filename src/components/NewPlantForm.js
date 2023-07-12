@@ -22,11 +22,11 @@ function NewPlantForm({onAddPlant}) {
             body: JSON.stringify(newPlant),
       })
       .then((res) => res.json())
-      .then((newPlant) =>onAddPlant(newPlant))
+      .then((newPlant) => onAddPlant(newPlant))
       console.log(newPlant);
       setName("");
       setImage("");
-      setPrice(0);
+      setPrice("");
   };
 
   function handleChange(e) {
